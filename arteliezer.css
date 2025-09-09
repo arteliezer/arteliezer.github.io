@@ -323,28 +323,32 @@ html {
 }
 
 
-/* ====== MODAL DEL FORMULARIO ====== */
+/* ====== MODAL DEL FORMULARIO OPTIMIZADO ====== */
 .modal {
   display: none;
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.6);
   z-index: 1000;
+  overflow-y: auto; /* permite scroll si el modal es más alto que la pantalla */
+  -webkit-overflow-scrolling: touch; /* scroll suave en móviles */
+  padding: 20px; /* margen interno para que el modal no pegue a los bordes */
 }
 
 .modal-contenido {
   position: relative;
   background: #fff;
-  width: 90%;
+  width: 100%;
   max-width: 520px;
-  margin: 5% auto;
+  margin: auto; /* centra vertical y horizontalmente */
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.25);
   animation: aparecer 200ms ease-out;
   display: flex;
   flex-direction: column;
-  max-height: 80vh;
+  max-height: calc(100vh - 40px); /* deja margen arriba y abajo */
+  overflow-y: auto; /* scroll interno si el contenido es largo */
 }
 
 .modal-header {
@@ -365,6 +369,7 @@ html {
   font-size: 28px;
   cursor: pointer;
   color: #666;
+  line-height: 1;
 }
 
 .modal-header .cerrar:hover {
@@ -377,9 +382,21 @@ html {
   flex: 1;
 }
 
-@keyframes aparecer {
-  from { transform: translateY(-10px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+/* ====== Ajustes para móviles ====== */
+@media (max-width: 600px) {
+  .modal {
+    padding: 10px;
+  }
+
+  .modal-contenido {
+    width: 100%;
+    max-height: calc(100vh - 20px);
+    padding: 15px;
+  }
+
+  .modal-header h2 {
+    font-size: 1rem;
+  }
 }
 
 /* ====== FORMULARIO ====== */
