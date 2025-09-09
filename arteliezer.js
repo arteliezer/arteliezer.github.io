@@ -1,11 +1,9 @@
-// Cargar con <script src="script.js" defer></script>
 
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('.encabezado');
   const galeria = document.querySelector('.galeria');
   if (header && galeria) galeria.style.marginTop = `${header.offsetHeight}px`;
 
-  // Funciones reutilizables
   const abrirModal = (modal) => {
     if (modal) {
       modal.style.display = 'block';
@@ -19,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // --- Modal de contacto ---
   const modalContacto = document.getElementById('modal-contacto');
   const abrirContacto = document.getElementById('abrir-contacto');
   const cerrarContacto = document.getElementById('cerrar-contacto');
@@ -35,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Abrir desde modal de cuadro
   const btnContactarCuadro = document.getElementById('btn-contactar-cuadro');
   const modalCuadro = document.getElementById('modal-cuadro');
   if (btnContactarCuadro) {
@@ -65,7 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Modal de cuadro ---
   const cerrarCuadro = document.getElementById('cerrar-cuadro');
   const modalImg = document.getElementById('modal-cuadro-img');
   const modalTitulo = document.getElementById('modal-cuadro-titulo');
@@ -84,13 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (cerrarCuadro) cerrarCuadro.addEventListener('click', () => cerrarModal(modalCuadro));
   modalCuadro?.addEventListener('click', (e) => { if (e.target === modalCuadro) cerrarModal(modalCuadro); });
 
-  // --- Botón volver arriba ---
   const botonArriba = document.querySelector('.boton-volver-arriba');
   window.addEventListener('scroll', () => {
     if (botonArriba) botonArriba.style.display = window.scrollY > 200 ? 'block' : 'none';
   });
 
-  // --- Modal legal ---
   const modalLegal = document.getElementById('modal-legal');
   const abrirPrivacidad = document.getElementById('abrir-privacidad');
   const abrirTerminos = document.getElementById('abrir-terminos');
@@ -102,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (cerrarModalLegal) cerrarModalLegal.addEventListener('click', () => cerrarModal(modalLegal));
   modalLegal?.addEventListener('click', (e) => { if (e.target === modalLegal) cerrarModal(modalLegal); });
 
-  // --- Formulario de contacto ---
   const formContacto = document.getElementById('form-contacto');
   if (formContacto) {
     formContacto.addEventListener('submit', (e) => {
@@ -122,3 +114,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
