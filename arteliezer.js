@@ -1,26 +1,35 @@
+// Cargar con <script src="script.js" defer></script>
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Ajustar margen de galería según altura del header
   const header = document.querySelector('.encabezado');
   const galeria = document.querySelector('.galeria');
-  if (header && galeria) {
-    galeria.style.marginTop = header.offsetHeight + 'px';
-  }
+  if (header && galeria) galeria.style.marginTop = `${header.offsetHeight}px`;
+
+  // Funciones reutilizables
+  const abrirModal = (modal) => {
+    if (modal) {
+      modal.style.display = 'block';
+      modal.setAttribute('aria-hidden', 'false');
+    }
+  };
+  const cerrarModal = (modal) => {
+    if (modal) {
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+    }
+  };
 
   // --- Modal de contacto ---
   const modalContacto = document.getElementById('modal-contacto');
-  const abrirContacto = document.getElementById('abrir-contacto'); // botón/enlace cabecera
+  const abrirContacto = document.getElementById('abrir-contacto');
   const cerrarContacto = document.getElementById('cerrar-contacto');
   const selectAsunto = document.getElementById('asunto');
   const campoMensaje = document.getElementById('mensaje');
 
-  // Abrir desde cabecera
   if (abrirContacto) {
     abrirContacto.addEventListener('click', (e) => {
       e.preventDefault();
-      modalContacto.style.display = 'block';
-      modalContacto.setAttribute('aria-hidden', 'false');
-      // Limpiar selección y mensaje
+      abrirModal(modalContacto);
       if (selectAsunto) selectAsunto.value = '';
       if (campoMensaje) campoMensaje.value = '';
     });
@@ -32,16 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnContactarCuadro) {
     btnContactarCuadro.addEventListener('click', () => {
       const tituloCuadro = document.getElementById('modal-cuadro-titulo').textContent.trim();
-      modalCuadro.style.display = 'none';
-      modalContacto.style.display = 'block';
-      modalContacto.setAttribute('aria-hidden', 'false');
+      cerrarModal(modalCuadro);
+      abrirModal(modalContacto);
       if (selectAsunto) {
-        for (let option of selectAsunto.options) {
-          if (option.value === tituloCuadro) {
-            option.selected = true;
-            break;
-          }
-        }
+        [...selectAsunto.options].forEach(opt => {
+          if (opt.value === tituloCuadro) opt.selected = true;
+        });
       }
       if (campoMensaje) {
         campoMensaje.value = `Me gustaría recibir información sobre el cuadro "${tituloCuadro}".`;
@@ -49,28 +54,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Cerrar modal de contacto
-  if (cerrarContacto) {
-    cerrarContacto.addEventListener('click', () => {
-      modalContacto.style.display = 'none';
-      modalContacto.setAttribute('aria-hidden', 'true');
-    });
-  }
-  modalContacto.addEventListener('click', (e) => {
-    if (e.target === modalContacto) {
-      modalContacto.style.display = 'none';
-      modalContacto.setAttribute('aria-hidden', 'true');
-    }
-  });
+  if (cerrarContacto) cerrarContacto.addEventListener('click', () => cerrarModal(modalContacto));
+  modalContacto?.addEventListener('click', (e) => { if (e.target === modalContacto) cerrarModal(modalContacto); });
 
-  // Rellenar mensaje al cambiar asunto manualmente
   if (selectAsunto && campoMensaje) {
     selectAsunto.addEventListener('change', function () {
-      if (this.value && this.value !== 'Otra información') {
-        campoMensaje.value = `Me gustaría recibir información sobre el cuadro "${this.value}".`;
-      } else {
-        campoMensaje.value = '';
-      }
+      campoMensaje.value = (this.value && this.value !== 'Otra información')
+        ? `Me gustaría recibir información sobre el cuadro "${this.value}".`
+        : '';
     });
   }
 
@@ -86,53 +77,35 @@ document.addEventListener('DOMContentLoaded', () => {
       modalImg.alt = img.alt;
       modalTitulo.textContent = img.dataset.titulo || '';
       modalHistoria.textContent = img.dataset.historia || '';
-      modalCuadro.style.display = 'block';
+      abrirModal(modalCuadro);
     });
   });
-  if (cerrarCuadro) {
-    cerrarCuadro.addEventListener('click', () => {
-      modalCuadro.style.display = 'none';
-    });
-  }
-  modalCuadro.addEventListener('click', (e) => {
-    if (e.target === modalCuadro) {
-      modalCuadro.style.display = 'none';
-    }
-  });
+
+  if (cerrarCuadro) cerrarCuadro.addEventListener('click', () => cerrarModal(modalCuadro));
+  modalCuadro?.addEventListener('click', (e) => { if (e.target === modalCuadro) cerrarModal(modalCuadro); });
 
   // --- Botón volver arriba ---
   const botonArriba = document.querySelector('.boton-volver-arriba');
   window.addEventListener('scroll', () => {
-    botonArriba.style.display = window.scrollY > 200 ? 'block' : 'none';
+    if (botonArriba) botonArriba.style.display = window.scrollY > 200 ? 'block' : 'none';
   });
 
   // --- Modal legal ---
   const modalLegal = document.getElementById('modal-legal');
   const abrirPrivacidad = document.getElementById('abrir-privacidad');
   const abrirTerminos = document.getElementById('abrir-terminos');
-  const cerrarModalLegal = modalLegal.querySelector('.cerrar');
+  const cerrarModalLegal = modalLegal?.querySelector('.cerrar');
 
-  function abrirModalLegal(e) {
-    e.preventDefault();
-    modalLegal.style.display = 'block';
-  }
-  if (abrirPrivacidad) abrirPrivacidad.addEventListener('click', abrirModalLegal);
-  if (abrirTerminos) abrirTerminos.addEventListener('click', abrirModalLegal);
-  if (cerrarModalLegal) {
-    cerrarModalLegal.addEventListener('click', () => {
-      modalLegal.style.display = 'none';
-    });
-  }
-  window.addEventListener('click', (e) => {
-    if (e.target === modalLegal) {
-      modalLegal.style.display = 'none';
-    }
-  });
+  const abrirLegal = (e) => { e.preventDefault(); abrirModal(modalLegal); };
+  if (abrirPrivacidad) abrirPrivacidad.addEventListener('click', abrirLegal);
+  if (abrirTerminos) abrirTerminos.addEventListener('click', abrirLegal);
+  if (cerrarModalLegal) cerrarModalLegal.addEventListener('click', () => cerrarModal(modalLegal));
+  modalLegal?.addEventListener('click', (e) => { if (e.target === modalLegal) cerrarModal(modalLegal); });
 
-  // --- Envío del formulario de contacto ---
+  // --- Formulario de contacto ---
   const formContacto = document.getElementById('form-contacto');
   if (formContacto) {
-    formContacto.addEventListener('submit', function(e) {
+    formContacto.addEventListener('submit', (e) => {
       e.preventDefault();
       const nombre = document.getElementById('nombre').value.trim();
       const asunto = document.getElementById('asunto').value.trim();
@@ -149,11 +122,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-
-
-
-
-
-
-
-
