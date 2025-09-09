@@ -312,14 +312,14 @@ html {
   animation: aparecer 200ms ease-out;
   display: flex;
   flex-direction: column;
-  max-height: 80vh; /* límite total del modal */
+  max-height: 80vh;
 }
 
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-shrink: 0; /* no se encoge */
+  flex-shrink: 0;
   border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
 }
@@ -340,11 +340,10 @@ html {
 }
 
 .modal-cuerpo {
-  overflow-y: auto; /* scroll solo aquí */
+  overflow-y: auto;
   padding-top: 10px;
-  flex: 1; /* ocupa todo el espacio restante */
+  flex: 1;
 }
-
 
 @keyframes aparecer {
   from { transform: translateY(-10px); opacity: 0; }
@@ -358,7 +357,7 @@ html {
 
 .grupo-campo {
   margin-bottom: 15px;
-  text-align: left; /* evita centrado heredado */
+  text-align: left;
 }
 
 .modal-contenido label:not(.checkbox-terminos) {
@@ -443,19 +442,78 @@ html {
   text-decoration: underline;
 }
 
-
 /* ====== RESPONSIVE ====== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .contenedor-principal {
+    padding: 0 15px;
+  }
+  .columna {
+    flex: 100%;
+  }
+  .encabezado nav {
+    padding-right: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .logo {
+    font-size: 2rem;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+/* Móviles grandes */
+@media (max-width: 768px) {
+  .fila-superior {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .encabezado {
+    font-size: 1.2rem;
+    padding: 8px;
+  }
+  .redes-sociales {
+    padding-right: 0;
+  }
+  .modal-cuadro-contenido {
+    flex-direction: column;
+    height: auto;
+    width: 95vw;
+  }
+  .modal-cuadro-izquierda,
+  .modal-cuadro-derecha {
+    flex: 1 1 auto;
+    max-height: none;
+  }
+}
+
+/* Móviles pequeños */
 @media (max-width: 480px) {
+  .columna {
+    flex: 100%;
+  }
+  .logo {
+    font-size: 1.8rem;
+  }
+  .banner-info {
+    padding: 15px;
+    gap: 10px;
+  }
+  .banner-info .texto h2 {
+    font-size: 1.2rem;
+  }
+  .banner-info .texto p {
+    font-size: 1rem;
+  }
   .modal-contenido {
     padding: 15px;
+    width: 95%;
   }
   .checkbox-terminos {
     flex-direction: column;
     gap: 4px;
   }
 }
-
-
-
-
-
