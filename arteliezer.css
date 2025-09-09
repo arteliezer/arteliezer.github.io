@@ -224,21 +224,24 @@ html {
   opacity: 1;
 }
 
-/* ====== MODAL CUADRO ====== */
+/* ====== MODAL CUADRO OPTIMIZADO ====== */
 .modal-cuadro-contenido {
   position: relative;
   display: flex;
   flex-wrap: nowrap;
   gap: 20px;
   width: 90vw;
-  height: 90vh;
-  margin: 5vh auto;
+  max-height: calc(100vh - 40px); /* deja margen arriba/abajo */
+  margin: 20px auto;
   background: #fff;
   padding: 20px;
   border-radius: 6px;
   box-sizing: border-box;
-  align-items: center;
+  align-items: flex-start; /* no centrar verticalmente */
+  overflow-y: auto; /* scroll si el contenido es más alto */
+  -webkit-overflow-scrolling: touch; /* scroll suave en iOS */
 }
+
 .cuadro {
   cursor: pointer;
   transition: transform 0.2s ease;
@@ -247,6 +250,7 @@ html {
   transform: scale(1.02);
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
+
 .modal-cuadro-izquierda {
   flex: 0 0 60%;
   display: flex;
@@ -256,7 +260,7 @@ html {
 
 .modal-cuadro-izquierda img {
   max-width: 100%;
-  max-height: 100vh;
+  max-height: 80vh; /* deja espacio para márgenes */
   object-fit: contain;
   border-radius: 4px;
 }
@@ -265,9 +269,10 @@ html {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* texto desde arriba */
   overflow-y: auto;
-  max-height: 100vh;
+  max-height: 80vh; /* evita que se corte */
+  padding-right: 10px; /* espacio para scroll */
 }
 
 .modal-cuadro-derecha h2 {
@@ -279,7 +284,7 @@ html {
   line-height: 1.5;
   font-size: 1.1rem;
 }
- 
+
 .checkbox-terminos {
   display: inline-flex;       
   align-items: flex-start;
@@ -290,6 +295,33 @@ html {
   width: fit-content;         
   max-width: 100%;            
 }
+
+/* ====== Ajustes para móviles ====== */
+@media (max-width: 768px) {
+  .modal-cuadro-contenido {
+    flex-direction: column;
+    width: 95vw;
+    max-height: calc(100vh - 20px);
+    margin: 10px auto;
+  }
+
+  .modal-cuadro-izquierda,
+  .modal-cuadro-derecha {
+    flex: none;
+    width: 100%;
+    max-height: none;
+  }
+
+  .modal-cuadro-izquierda img {
+    max-height: 60vh;
+  }
+
+  .modal-cuadro-derecha {
+    max-height: none;
+    overflow-y: visible;
+  }
+}
+
 
 /* ====== MODAL DEL FORMULARIO ====== */
 .modal {
