@@ -1,4 +1,4 @@
-/* ====== VARIABLES BÁSICAS ====== */
+
 :root {
   --color-principal: #000;
   --color-texto: #333;
@@ -8,13 +8,12 @@
   --acento: #e91e63;
 }
 
-/* ====== RESET Y BASE ====== */
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
   font-family: "Raleway", Arial, sans-serif;
-  background: --fondo-base, #fafafa; /* fallback por seguridad */
+  background: --fondo-base, #fafafa; 
   background: var(--fondo-base);
   color: var(--color-texto);
 }
@@ -25,7 +24,6 @@ body {
   padding: 0 15px;
 }
 
-/* ====== ENCABEZADO ====== */
 .encabezado {
   position: fixed;
   top: 0; left: 0;
@@ -62,7 +60,6 @@ body {
   padding-right: 36px;
 }
 
-/* Redes sociales */
 .redes-sociales { padding-right: 36px; }
 .redes-sociales a {
   display: inline-flex;
@@ -75,7 +72,6 @@ body {
 .redes-sociales svg { width: 24px; height: 24px; }
 .redes-sociales a:hover { opacity: 0.7; }
 
-/* ====== GALERÍA ====== */
 .galeria {
   display: flex;
   flex-wrap: wrap;
@@ -93,7 +89,6 @@ body {
   border-radius: 4px;
 }
 
-/* ====== PIE DE PÁGINA ====== */
 .pie-pagina {
   background: var(--fondo-claro);
   text-align: center;
@@ -112,8 +107,6 @@ body {
   margin-top: 16px;
 }
 
-/* ====== BANNER INFERIOR EN CONSTRUCCIÓN ====== */
-/* Restaurado a caja gris sólida con proporciones y estilo originales */
 .banner-info {
   display: flex;
   align-items: center;
@@ -149,7 +142,6 @@ body {
   opacity: 0.9;
 }
 
-/* ====== COPYRIGHT Y CRÉDITOS ====== */
 .footer-bottom {
   display: flex;
   justify-content: space-between;
@@ -170,7 +162,6 @@ body {
 .footer-bottom .creditos a { color: inherit; text-decoration: none; font-weight: bold; }
 .footer-bottom .creditos a:hover { text-decoration: underline; }
 
-/* ====== BOTÓN VOLVER ARRIBA ====== */
 .boton-volver-arriba {
   display: none;
   position: fixed;
@@ -188,7 +179,6 @@ body {
 }
 .boton-volver-arriba:hover { opacity: 1; transform: translateY(-2px); }
 
-/* ====== OPTIMIZACIÓN MODAL CUADRO ====== */
 .modal-cuadro-contenido {
   position: relative;
   display: flex;
@@ -204,7 +194,6 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Imagen a la izquierda */
 .modal-cuadro-izquierda {
   flex: 0 0 60%;
   display: flex;
@@ -218,7 +207,6 @@ body {
   border-radius: 4px;
 }
 
-/* Texto a la derecha */
 .modal-cuadro-derecha {
   flex: 1;
   display: flex;
@@ -230,7 +218,6 @@ body {
 .modal-cuadro-derecha h2 { margin-top: 0; font-size: 2rem; }
 .modal-cuadro-derecha p { line-height: 1.5; font-size: 1.1rem; }
 
-/* Botón de cierre siempre visible arriba a la derecha */
 .modal-cuadro-contenido > .cerrar {
   position: absolute;
   top: 10px;
@@ -245,7 +232,6 @@ body {
 }
 .modal-cuadro-contenido > .cerrar:hover { color: #000; }
 
-/* ====== RESPONSIVE ====== */
 @media (max-width: 768px) {
   .modal-cuadro-contenido {
     flex-direction: column;
@@ -267,8 +253,6 @@ body {
   }
 }
 
-
-/* ====== MODAL DEL FORMULARIO ====== */
 .modal {
   display: none;
   position: fixed;
@@ -295,7 +279,7 @@ body {
   overflow-y: auto;
 }
 .modal-header {
-  position: relative; /* referencia para contenidos internos */
+  position: relative; 
   display: flex;
   align-items: center;
   gap: 10px;
@@ -304,8 +288,6 @@ body {
 }
 .modal-header h2 { margin: 0; font-size: 1.2rem; }
 
-/* ====== BOTONES CERRAR MODAL (ARREGLADO) ====== */
-/* Caso 1: botón dentro del header → va a la derecha */
 .modal-header .cerrar {
   position: static;
   margin-left: auto;
@@ -318,7 +300,6 @@ body {
 }
 .modal-header .cerrar:hover { color: var(--color-principal); }
 
-/* Caso 2: botón como hijo directo del contenedor → esquina superior derecha del modal */
 .modal-contenido > .cerrar,
 .modal-cuadro-contenido > .cerrar {
   position: absolute;
@@ -334,10 +315,8 @@ body {
 .modal-contenido > .cerrar:hover,
 .modal-cuadro-contenido > .cerrar:hover { color: var(--color-principal); }
 
-/* Cuerpo del modal de formulario */
 .modal-cuerpo { overflow-y: auto; padding-top: 10px; flex: 1; }
 
-/* ====== FORMULARIO ====== */
 .formulario-contacto { margin-top: 20px; }
 .grupo-campo { margin-bottom: 15px; text-align: left; }
 .modal-contenido label:not(.checkbox-terminos) {
@@ -367,7 +346,6 @@ body {
 }
 .boton-enviar:hover { background: #555; }
 
-/* ====== CHECKBOX TÉRMINOS ====== */
 .checkbox-terminos {
   display: inline-flex;
   align-items: flex-start;
@@ -387,8 +365,6 @@ body {
 .checkbox-terminos a { color: var(--acento); text-decoration: none; }
 .checkbox-terminos a:hover { text-decoration: underline; }
 
-/* ====== RESPONSIVE ====== */
-/* Tablets */
 @media (max-width: 1024px) {
   .contenedor-principal { padding: 0 15px; }
   .columna { flex: 100%; }
@@ -400,26 +376,21 @@ body {
   .logo { font-size: 2rem; text-align: center; width: 100%; }
 }
 
-/* Móviles grandes */
 @media (max-width: 768px) {
   .fila-superior { flex-direction: column; align-items: center; gap: 10px; }
   .encabezado { font-size: 1.2rem; padding: 8px; }
   .redes-sociales { padding-right: 0; }
 
-  /* Logo a la izquierda cuando se necesite distribución horizontal */
   .fila-superior { flex-wrap: nowrap; justify-content: space-between; }
   .logo { margin-right: auto; padding-left: 8px; }
   .encabezado nav, .redes-sociales { padding-right: 8px; }
 
-  /* Galería en una columna */
   .columna { flex: 100%; padding: 0; }
 
-  /* Banner en columna */
   .banner-info { flex-direction: column; gap: 10px; padding: 20px; }
   .icono-animado, .gear.grande { width: 60px; height: 60px; }
   .gear.pequena { width: 30px; height: 30px; top: 15px; left: 15px; }
 
-  /* Modal cuadros: columna y scroll correcto */
   .modal-cuadro-contenido {
     flex-direction: column;
     width: 95vw;
@@ -432,11 +403,9 @@ body {
   .modal-cuadro-izquierda img { max-height: 60vh; }
   .modal-cuadro-derecha { max-height: none; overflow-y: visible; }
 
-  /* Evitar scroll lateral en móvil */
   html, body { overflow-x: hidden; }
 }
 
-/* Móviles pequeños */
 @media (max-width: 480px) {
   .logo { font-size: 1.8rem; padding: 4px 8px; }
   .encabezado nav { font-size: 1rem; }
@@ -458,3 +427,4 @@ body {
 
   .checkbox-terminos { flex-direction: column; gap: 4px; }
 }
+
