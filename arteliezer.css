@@ -182,7 +182,6 @@ body {
 .modal-cuadro-contenido {
   position: relative;
   display: flex;
-  flex-direction: row;
   gap: 20px;
   width: 90vw;
   max-height: calc(100vh - 40px);
@@ -191,8 +190,11 @@ body {
   padding: 20px;
   border-radius: 6px;
   align-items: flex-start;
-  overflow: hidden; 
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
+.cuadro { cursor: pointer; transition: transform 0.2s ease; }
+.cuadro:hover { transform: scale(1.02); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
 
 .modal-cuadro-izquierda {
   flex: 0 0 60%;
@@ -206,7 +208,6 @@ body {
   object-fit: contain;
   border-radius: 4px;
 }
-
 .modal-cuadro-derecha {
   flex: 1;
   display: flex;
@@ -217,50 +218,6 @@ body {
 }
 .modal-cuadro-derecha h2 { margin-top: 0; font-size: 2rem; }
 .modal-cuadro-derecha p { line-height: 1.5; font-size: 1.1rem; }
-
-.modal-cuadro-contenido > .cerrar {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: transparent;
-  border: none;
-  font-size: 28px;
-  line-height: 1;
-  cursor: pointer;
-  color: #666;
-  z-index: 10;
-}
-.modal-cuadro-contenido > .cerrar:hover { color: #000; }
-
-@media (max-width: 768px) {
-  .modal-cuadro-contenido {
-    flex-direction: column;
-    width: 95vw;
-    max-height: none;
-    margin: 10px auto;
-    padding: 15px;
-  }
-  .modal-cuadro-izquierda,
-  .modal-cuadro-derecha {
-    flex: none;
-    width: 100%;
-    max-height: none;
-  }
-  .modal-cuadro-izquierda img {
-    max-height: 50vh;
-  }
-  .modal-cuadro-derecha {
-    overflow-y: visible;
-    padding-right: 0;
-    margin-top: 10px;
-  }
-  .modal-cuadro-contenido > .cerrar {
-    top: 5px;
-    right: 5px;
-    font-size: 24px;
-  }
-}
-
 .modal {
   display: none;
   position: fixed;
@@ -435,4 +392,5 @@ body {
 
   .checkbox-terminos { flex-direction: column; gap: 4px; }
 }
+
 
