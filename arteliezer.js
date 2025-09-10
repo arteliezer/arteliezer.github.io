@@ -115,3 +115,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+  const botonCompartir = document.getElementById('boton-compartir');
+
+  botonCompartir.addEventListener('click', async (e) => {
+    e.preventDefault(); // Evita que el enlace recargue la página
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'ARTELIEZER | Arte reciclado por Eliezer Pérez',
+          text: 'Descubre la galería de arte reciclado de Eliezer Pérez.',
+          url: 'https://www.arteliezer.com'
+        });
+        console.log('Compartido con éxito');
+      } catch (error) {
+        console.error('Error al compartir:', error);
+      }
+    } else {
+      alert('Tu navegador no soporta el botón de compartir nativo.');
+    }
+  });
+
