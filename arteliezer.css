@@ -466,5 +466,81 @@ body {
   .checkbox-terminos { flex-direction: column; gap: 4px; }
 }
 
+.menu-hamburguesa {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1100;
+}
+
+#abrir-menu {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: var(--color-principal);
+  cursor: pointer;
+}
+
+.menu-hamburguesa {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1100;
+}
+
+#abrir-menu {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: var(--color-principal);
+  cursor: pointer;
+}
 
 
+.boton-menu {
+  position: fixed;
+  top: 40px;
+  left: 20px;
+  background: none;
+  border: none;
+  color: var(--color-principal);
+  cursor: pointer;
+  z-index: 1100;
+}
+
+#menu-lateral {
+  position: fixed;
+  top: 80;
+  left: -220px; 
+  width: 200px;
+  background-color: white;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100vh;
+  transition: left 0.3s ease;
+  z-index: 1000;
+}
+
+#menu-lateral a {
+  color: var(--color-principal);
+  text-decoration: none;
+  font-size: 16px;
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+}
+
+#menu-lateral a:last-child {
+  border-bottom: none;
+}
+
+#menu-lateral a:hover {
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+#menu-lateral.activo {
+  left: 0;
+}
