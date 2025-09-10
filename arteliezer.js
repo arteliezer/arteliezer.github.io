@@ -136,3 +136,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+const abrirMenu = document.getElementById('abrir-menu');
+  const menuLateral = document.getElementById('menu-lateral');
+
+  abrirMenu.addEventListener('click', (e) => {
+    e.stopPropagation();
+    menuLateral.classList.toggle('activo');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!menuLateral.contains(e.target) && e.target !== abrirMenu) {
+      menuLateral.classList.remove('activo');
+    }
+  });
+
+  menuLateral.querySelectorAll('a').forEach(enlace => {
+    enlace.addEventListener('click', () => {
+      menuLateral.classList.remove('activo');
+    });
+  });
+
+
