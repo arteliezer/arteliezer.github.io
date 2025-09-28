@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalImg = document.getElementById('modal-cuadro-img');
   const modalTitulo = document.getElementById('modal-cuadro-titulo');
   const modalHistoria = document.getElementById('modal-cuadro-historia');
+  const btnContactar = document.getElementById('btn-contactar-cuadro');
 
   document.querySelectorAll('.cuadro').forEach(img => {
     img.addEventListener('click', () => {
@@ -77,6 +78,13 @@ document.addEventListener('DOMContentLoaded', () => {
       modalImg.alt = img.alt;
       modalTitulo.textContent = img.dataset.titulo || '';
       modalHistoria.textContent = img.dataset.historia || '';
+	  
+	  document.getElementById('modal-cuadro-autor').textContent = `Autor: ${img.dataset.autor || 'Desconocido'}`;
+	  document.getElementById('modal-cuadro-medidas').textContent = `Medidas: ${img.dataset.medidas || 'No especificadas'}`;
+	  
+	  const adquirido = img.dataset.adquirido === "true";
+	  btnContactar.style.display = adquirido ? "none" : "inline-block";
+
       abrirModal(modalCuadro);
     });
   });
