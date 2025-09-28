@@ -199,6 +199,7 @@ body {
 .modal-cuadro-contenido {
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   width: 90vw;
   max-height: calc(100vh - 40px);
@@ -214,10 +215,11 @@ body {
 .cuadro:hover { transform: scale(1.02); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
 
 .modal-cuadro-izquierda {
-  flex: 0 0 60%;
+  flex: 1;
+  min-width: 300px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 .modal-cuadro-izquierda img {
   max-width: 100%;
@@ -233,6 +235,15 @@ body {
   max-height: 80vh;
   padding-right: 10px;
 }
+
+.info-cuadro {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: #555;
+  text-align: center;
+}
+
+
 .modal-cuadro-derecha h2 { margin-top: 0; font-size: 2rem; }
 .modal-cuadro-derecha p { line-height: 1.5; font-size: 1.1rem; }
 
@@ -583,7 +594,26 @@ body {
   left: 0;
 }
 
+picture {
+  position: relative;
+  display: inline-block;
+}
 
+picture .overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg); /* Diagonal */
+  background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
+  color: white;
+  padding: 0.5em 2em;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  pointer-events: none;
+  border: 2px solid white;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
 
 
 
