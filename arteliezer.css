@@ -615,5 +615,73 @@ picture .overlay {
   box-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 
+.bio-arteliezer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Helvetica Neue', sans-serif;
+  color: #222;
+  background-color: #fff;
+}
+
+.bio-arteliezer h2 {
+  font-size: 2em;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #444;
+}
+
+.bio-block {
+  margin-bottom: 30px;
+  border-left: 4px solid #ccc;
+  padding-left: 16px;
+}
+
+.bio-block h3 {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.bio-block p {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #555;
+}
+
+.bio-quote {
+  margin-top: 40px;
+  text-align: center;
+  font-style: italic;
+  color: #666;
+}
+
+.bio-quote blockquote {
+  font-size: 1.2em;
+  border-left: none;
+}
+
+/* 🌐 Responsive para pantallas pequeñas */
+@media screen and (max-width: 600px) {
+  .bio-arteliezer {
+    padding: 20px 15px;
+  }
+
+  .bio-arteliezer h2 {
+    font-size: 1.6em;
+  }
+
+  .bio-block h3 {
+    font-size: 1.1em;
+  }
+
+  .bio-block p {
+    font-size: 0.95em;
+  }
+
+  .bio-quote blockquote {
+    font-size: 1em;
+  }
+}
 
 
